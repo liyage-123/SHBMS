@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" role="button" href="{% url 'notice_list' %}">
+            公告动态<span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" role="button" href="{% url 'site_help' %}">
+            购书指南
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" role="button" href="{% url 'article' 1 %}">
+            关于我们
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active btn btn-outline-primary" role="button" href="#">
+                分类<span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item btn-group dropright">
+              <a class="nav-link btn btn-outline-primary dropdown-toggle" role="button" id="category1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">理工类</a>
+              <div class="dropdown-menu" aria-labelledby="category1_menu">
+                <a class="dropdown-item" href="{% url 'books_with_type' 1 %}">理学</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 4 %}">工学</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 3 %}">计算机</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 2 %}">医学</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 13 %}">农学</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 7 %}">经济管理</a>
+              </div>
+            </li>
+            <li class="nav-item btn-group dropright">
+              <a class="nav-link btn btn-outline-primary dropdown-toggle" role="button" id="category2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">人文艺术类</a>
+              <div class="dropdown-menu" aria-labelledby="category2_menu">
+                <a class="dropdown-item" href="{% url 'books_with_type' 6 %}">法律</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 8 %}">语言学</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 9 %}">心理</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 5 %}">人文</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 10 %}">艺术</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 9 %}">哲学</a>
+                <a class="dropdown-item" href="{% url 'books_with_type' 12 %}">教育</a>
+              </div>
+            </li>
+            <li class="nav-item btn-group dropright">
+              <a class="nav-link btn btn-outline-primary dropdown-toggle" role="button" id="category3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其他</a>
+              <div class="dropdown-menu" aria-labelledby="category3_menu">
+                <a class="dropdown-item" href="#">小说</a>
+                <a class="dropdown-item" href="#">散文</a>
+                <a class="dropdown-item" href="#">诗歌</a>
+                <a class="dropdown-item" href="#">其他</a>
+          </div>
+      </li>
+   </ul>
+</div>
+</nav>

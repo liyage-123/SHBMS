@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="">
-  {% extends 'homepage.html' %}
   {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二手书交易平台 - 购书指南</title> 
+    <title>二手书交易平台</title> 
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="{% static 'bootstrap/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </head>
-{% block base %}
-{% include 'help_base.html' %}
-<main role="main" class="col-md-7 col-md-pull-3">
-   <div id="article">
-  <hr>
-  <h2>{{notice.title}}</h2>
-  <hr>
-  <p>{{notice.content}}</p>
-  <p class="text-right">{{ notice.comment_time }}</p>
+<body>
+<div class="container">
+    <div style="display: block;" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" >
+            <p>提示</p>
+          </div>
+          <div class="modal-body">
+            <h3 class="modal-title">登出成功</h3> 
+            <br><br><br>
+          </div>
+          </div>
+        </div>
+    </div>
 </div>
-</main>
-</div>
-</div>
-{% endblock %}
+</body>
 </html>>

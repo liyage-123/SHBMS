@@ -10,12 +10,13 @@
 <body>
 
 	{% block base%}
-
+	{% include 'center_base.html' %}
+	<div>
     <hr>
 
 	{% for my_good in my_goods %}
 
-	<img src="{{ my_good.picture_1.url}}"  alt="" height="35%" width="18%">
+	<img src="{{ my_good.picture_1.url}}"  alt="" width="30%">
 
 	<p>书籍名称：
         
@@ -48,6 +49,7 @@
         {% endfor %}
 
 	{% endblock %}
+	</div>>
 
 	
 

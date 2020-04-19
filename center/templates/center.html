@@ -18,38 +18,9 @@
     }
   </style>
   </head>
-
-<body class="bg-light">
   {% block base%}
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active btn btn-outline-primary" role="button" href="#">
-              个人中心<span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn btn-outline-primary" role="button" href="{% url 'personal_info' user.pk%}">
-              个人信息
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn btn-outline-primary" role="button" href="{% url 'my_book' user.pk %}">
-             我的图书
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn btn-outline-primary" role="button" href="{% url 'trans_info' user.pk %}">
-              我的交易记录
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+<body class="bg-light">
+  {% include 'center_base.html' %}
     <main role="main" class="col-md-10 ml-sm-auto px-2">
       <div class="row">
         <div class="col-md-2">        
@@ -83,7 +54,8 @@
                   <p>{{ 3.book.full_title }}</p>
                   <p>￥{{3.price}}</p>
                 </div>
-          </div>          
+          </div>
+          <a class="btn btn-outline-primary" href="{% url 'my_book' user.pk %}">查看更多 &raquo;</a>         
           <h2 class="border-top mt-4 pt-2">我的交易记录</h2>
           <table class="table text-center my-3">
             <thead class="thead-dark">

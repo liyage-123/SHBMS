@@ -10,8 +10,10 @@
 </head>
 
 <body>
-
+    
     {% block base%}
+    {% include 'center_base.html' %}
+    <div>
     <p>用户名：{{my_account.user.username}}</p>
     <p>邮箱：{{my_account.user.email}}</p>
     <p> 校区：{{my_account.school}}</p>
@@ -21,7 +23,7 @@
     <p> 账号状态：{{my_account.get_status_display}}</p>
     <p>信用分：{{my_account.credit}}</p>
      <a href="{% url 'update_info' user.pk%}">修改信息</a>
-   
+    </div>
 
     {% endblock %}
 

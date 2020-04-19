@@ -77,7 +77,7 @@ def login(request):
 # Create your views here.
 def logout(request):
     auth.logout(request)
-    return HttpResponse('登出成功')
+    return render(request, 'logout.html')
 
 
 def register(request):

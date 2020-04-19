@@ -13,10 +13,14 @@ def notice(request, notice_id):
 
 
 def site_help(request):
+    articles = Article.objects.all()
+    context = {'articles' :articles}
+    return render(request, 'help_table.html',context)
+
+
+def notice_list(request):
     notices = Notice.objects.all()
-    context = {
-        'notices': notices,
-    }
-    return render(request, 'help_table.html', context)
+    return render(request, 'notice_list.html' ,{'notices':notices})
+
 
 # Create your views here.

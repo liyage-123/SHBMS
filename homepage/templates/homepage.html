@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>二手书交易平台</title> 
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="{% static 'bootstrap/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
 
 <body class="bg-light">
   {% if user.is_authenticated %}
@@ -31,8 +32,8 @@
                 </li>
               </ul>
               <form class="form-inline mx-0 mx-md-3 my-2 my-md-0" action="/search/" method="POST">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-md-0" type="submit" placeholder=" ISBN编号或者书名" name="book_index" required>
+                <input name="book_index" class="form-control mr-sm-2" type="text" placeholder="ISBN编号或者书名" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-md-0" type="submit" required>
                   搜索
                 </button>
               </form>
@@ -40,51 +41,7 @@
             </div>
           </nav>
           {% block base%}
-          <div class="container-fluid">
-            <div class="row">
-              <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                  <ul class="nav flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link active btn btn-outline-primary" role="button" href="#">
-                        所有分类<span class="sr-only">(current)</span>
-                      </a>
-                    </li>
-                    <li class="nav-item btn-group dropright">
-                      <a class="nav-link btn btn-outline-primary dropdown-toggle" role="button" id="category1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">理工类</a>
-                      <div class="dropdown-menu" aria-labelledby="category1_menu">
-                        <a class="dropdown-item" href="{% url 'books_with_type' 1 %}">理学</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 4 %}">工学</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 3 %}">计算机</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 2 %}">医学</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 13 %}">农学</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 7 %}">经济管理</a>
-                      </div>
-                    </li>
-                    <li class="nav-item btn-group dropright">
-                      <a class="nav-link btn btn-outline-primary dropdown-toggle" role="button" id="category2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">人文艺术类</a>
-                      <div class="dropdown-menu" aria-labelledby="category2_menu">
-                        <a class="dropdown-item" href="{% url 'books_with_type' 6 %}">法律</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 8 %}">语言学</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 9 %}">心理</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 5 %}">人文</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 10 %}">艺术</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 9 %}">哲学</a>
-                        <a class="dropdown-item" href="{% url 'books_with_type' 12 %}">教育</a>
-                      </div>
-                    </li>
-                    <li class="nav-item btn-group dropright">
-                      <a class="nav-link btn btn-outline-primary dropdown-toggle" role="button" id="category3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其他</a>
-                      <div class="dropdown-menu" aria-labelledby="category3_menu">
-                        <a class="dropdown-item" href="#">小说</a>
-                        <a class="dropdown-item" href="#">散文</a>
-                        <a class="dropdown-item" href="#">诗歌</a>
-                        <a class="dropdown-item" href="#">其他</a>
-                  </div>
-              </li>
-           </ul>
-        </div>
-      </nav>
+          {% include 'homepage_base.html' %}
            
     <main role="main" class="col-md-10 ml-sm-auto px-2">
         <div id="carouselNotices" class="carousel slide" data-ride="carousel">
@@ -151,7 +108,7 @@
         </div>    
       </div>
     
-        <div>
+        <div id="recommand" class="col-md-10 ml-sm-auto px-2">
           <h1 class="border-top mt-4 pt-2">畅销图书</h1>
           <div class="btn-toolbar" role="toolbar">
             <div class="btn-group btn-group-sm" role="group">
@@ -162,7 +119,7 @@
           </div>
           <div class="row d-flex flex-wrap flex-md-nowrap my-3">
             {% for item in 理学 %}
-            <div class="card col-md-2">
+            <div class="card col-md-3">
               <img src="{{ item.picture.url }}" class="card-img-top" width="30%">
               <div class="card-body">
                 <p class="card-text h5">{{ item.full_title }}</p>
@@ -175,11 +132,31 @@
         </div>
     </main>
   </div>
-  </div>
-    
+  </div>    
         {% endblock %}
         {% else %}
-          <p>您未登录，<a href="{% url 'login' %}">点此登录</a></p>
+        <div class="container">
+          <div style="display: block;" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" >
+                  <h4 class="modal-title">您未登录</h4>
+                </div>
+                <div class="model-body">
+                  <br>
+                  <pre>  请登录查看网页内容</pre> 
+                  <br>
+                </div>
+                <div class="model-footer"  >
+                  <div class="row justify-content-around mb-3">
+                  <a href="{% url 'login'%}" class="btn btn-primary" role="button" >登录</a>
+                  <a href="{% url 'register'%}" class="btn btn-info" role="button">注册</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       {% endif %} 
     </div>
 </body>

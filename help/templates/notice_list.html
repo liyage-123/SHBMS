@@ -1,38 +1,36 @@
-{% extends 'homepage.html' %}
 <!DOCTYPE html>
 <html lang="">
+  {% extends 'homepage.html' %}
   {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二手书交易平台 - 购书指南</title> 
+    <title>二手书交易平台 - 公告 </title> 
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="{% static 'bootstrap/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </head>
+
 {% block base %}
 {% include 'help_base.html' %}
-<main role="main" class="col-md-10 ml-sm-auto px-2">
-  <h2 class="border-top mt-4 pt-2">购书指南</h2>
+<body>
+<main role="main" class="col-md-9 ">
+  <h2 class="border-top mt-4 pt-2">公告动态</h2>
   <div class="list-group">
-    <div class="row">
-      <div class="col-8">
-        {% for article in articles %}
-        {% if forloop.first %}
-        {% else %}
-        <a class="list-group-item list-group-item-action" href="{% url 'article' article.pk  %}">
-          {{article.title}}
-        </a>
-        {% endif %}
-        {% endfor %}
-      </div>
-  </div>
-  </div>
+  {% for notice in notices %}
+  <a class="list-group-item list-group-item-action" href="{% url 'notice' notice.pk %}">
+  <div class="row">
+        <div class="col-md-6">{{ notice.title }}</div>
+        <div class="col-md-3 text-right">{{ notice.comment_time }}</div> 
+    </div>
+  </a>
+  {% empty %}
+  <p>暂无公告</p>
+  {% endfor %}
 </main>
 </div>
 </div>
-{% endblock %}
 </body>
-</html>
-   
+{% endblock %}
+</html>>

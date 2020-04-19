@@ -1,41 +1,84 @@
-<html>
-<head>
-
-    <meta charset="UTF-8">
-     {% extends 'homepage.html' %}
-    <title>交易记录</title>
-
-<style>
-	pre{font-size: 16px; font-family: "微软雅黑";}
-</style>
-
-<body>
-
-    {% block base%}
-
+<!doctype html>
+  <head>
+        {% extends 'homepage.html' %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Pengbo Song">
+      {% load static %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>个人中心</title> 
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="{% static 'bootstrap/jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <style>
+    .portrait-cycle {
+      border-radius: 100%;
+    }
+  </style>
+  </head>
+{% block base %}
+{% include 'center_base.html' %}
+   <main role="main" class="col-md-10 ml-sm-auto px-2">
+      <div class="btn-toolbar" role="toolbar" >
+        <div class="btn-group btn-group" role="group">
+           <button type="button" class="btn btn-secondary ">所有记录</button>
+           <button type="button" class="btn btn-secondary ">卖出记录</button>
+            <button type="button" class="btn btn-secondary">买进记录</button>
+        </div>
+     </div>
+    <h2 class="border-top mt-4 pt-2">我的卖出记录</h2>
+    <table class="table text-center my-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" >书名</th>
+          <th scope="col">卖家</th>
+          <th scope="col">买家</th>
+          <th scope="col">价格</th>
+          <th scope="col">交易时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trans_record in trans_records %}
+        <tr>
+          <td><strong>{{ trans_record.goods.full_title}}</strong></td>
+          <td>{{trans_record.seller.username}}</td>
+          <td>{{trans_record.buyer.username}}</td>
+          <td>￥{{trans_record.price}}</td>
+          <td>{{trans_record.order_time}}</td> 
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
     <hr>
-        <h3>我的卖出记录<h3>
-
-	<pre>买家       商品名称                                交易日期                            价格</pre>
-	{% for trans_record in trans_records %}
-	
-	<pre>{{trans_record.seller.username}}       {{trans_record.buyer.username}}     {{trans_record.goods.full_title}}         {{trans_record.order_time}}       {{trans_record.price}}</pre>
-	
+    <h2 class="border-top mt-4 pt-2">我的买进记录</h2>
+    <table class="table text-center my-3">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" >书名</th>
+          <th scope="col">卖家</th>
+          <th scope="col">买家</th>
+          <th scope="col">价格</th>
+          <th scope="col">交易时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trans_record in buy_records %}
+        <tr>
+          <td><strong>{{ trans_record.goods.full_title}}</strong></td>
+          <td>{{trans_record.seller.username}}</td>
+          <td>{{trans_record.buyer.username}}</td>
+          <td>￥{{trans_record.price}}</td>
+          <td>{{trans_record.order_time}}</td> 
+        </tr>
         {% endfor %}
-
-	<hr>
-
-        <h3>我的买进记录<h3>
-
-	<pre>卖家       商品名称                                交易日期                            价格</pre>
-	{% for buy_record in buy_records %}
-	
-	<pre>{{buy_record.seller.username}}       {{buy_record.buyer.username}}      {{buy_record.goods.full_title}}         {{buy_record.order_time}}       {{buy_record.price}}</pre>
-
-        {% endfor %}
-	{% endblock %}
-
-
+      </tbody>
+    </table>
+   </main>
+</div>
+</div>
+        {% endblock %}
 </body>
 
 </html>
